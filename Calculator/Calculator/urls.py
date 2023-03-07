@@ -24,4 +24,7 @@ urlpatterns = [
     path('signinm',views.loginm_page),
     path('signups',views.signups_page),
     path('signupm',views.signupm_page),
+    path('test',views.take_test),
+    path('addq',views.question),
+    path('<int:qno>/<str:question>', views.answer)
 ]

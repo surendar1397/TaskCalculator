@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function verify(){
+            var x = document.getElementById('expected').value 
+            var your_answer = document.getElementById('answer').value
+            if (x == your_answer){
+                alert("Correct!!")
+            }
+            else{
+                alert('Incorrect')
+            }
+        }
+    </script>
+</head>
+<body>
+    question <input type="text" value="{{question}}" disabled>
+    answer <input type="text" name="" id="answer">
+    <input type="number" id="expected" value="{{expected}}" hidden>
+    <button onclick="verify()">Submit</button>
+</body>
+</html>
