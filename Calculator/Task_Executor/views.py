@@ -18,7 +18,7 @@ def logins_page(req):
             login(req, passed_user)
             passed = req.user.groups.filter(name="Student").exists()
             if passed:
-                return render(req,'message.html',{'msg': 'Authentication Passed','href': 'http://127.0.0.1:8000/signins', 'caption':'Student Login'})
+                return render(req,'message.html',{'msg': 'Authentication Passed','href': 'http://127.0.0.1:8000/test', 'caption':'Take test'})
             logout(req)
             return render(req,'message.html',{'msg': 'Authentication Failed(Wrong group)', 'href': 'http://127.0.0.1:8000', 'caption':'Home'})
             
@@ -37,7 +37,7 @@ def loginm_page(req):
             passed = req.user.groups.filter(name="Master").exists()
             print(passed, passed_user, 99999999999)
             if passed:
-                return render(req,'message.html',{'msg': 'Authentication Passed','href': 'http://127.0.0.1:8000/signupm', 'caption':'Login'})
+                return render(req,'message.html',{'msg': 'Authentication Passed','href': 'http://127.0.0.1:8000/addq', 'caption':'Add Question'})
             logout(req)
             return render(req,'message.html',{'msg': 'Authentication Failed(Wrong group)','href': 'http://127.0.0.1:8000', 'caption':'Home'})
             
@@ -52,7 +52,7 @@ def signups_page(req):
             usr = form.save()
             grp = Group.objects.get(name='Student')
             usr.groups.add(grp)
-            return render(req, 'message.html', {'msg': 'User Created', 'href': 'http://127.0.0.1:8000/answer', 'caption':'Take test'})
+            return render(req, 'message.html', {'msg': 'User Created', 'href': 'http://127.0.0.1:8000/logins', 'caption':'Student Login'})
         return render(req,'message.html',{'msg' : 'User Creation Failed','href': 'http://127.0.0.1:8000', 'caption':'Home'})
     
 def signupm_page(req):
@@ -64,5 +64,5 @@ def signupm_page(req):
             usr = form.save()
             grp = Group.objects.get(name='Master')
             usr.groups.add(grp)
-            return render(req, 'message.html', {'msg': 'User Created', 'href': 'http://127.0.0.1:8000/addq', 'caption':'Add Questions'})
+            return render(req, 'message.html', {'msg': 'User Created', 'href': 'http://127.0.0.1:8000/loginm', 'caption':'Master Login'})
         return render(req,'message.html',{'msg' : 'User Creation Failed','href': 'http://127.0.0.1:8000', 'caption':'Home'})
